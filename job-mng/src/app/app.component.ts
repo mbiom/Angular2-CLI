@@ -9,22 +9,27 @@ import {TodoDataService} from './todo-data.service';
   providers: [TodoDataService]
 })
 export class AppComponent {
-  newTodo: Todo = new Todo();
+  // newTodo: Todo = new Todo();
 
   constructor(private todoDataService: TodoDataService) {
 
   }
 
-  addTodo() {
-  	this.todoDataService.addTodo(this.newTodo);
-  	this.newTodo = new Todo();
-  }
+  // addTodo() {
+  // 	this.todoDataService.addTodo(this.newTodo);
+  // 	this.newTodo = new Todo();
+  // }
 
-  toggleTodoComplete(todo) {
+  // Add new method to handle event emitted by TodoListHeaderComponent
+  onAddTodo(todo: Todo) {
+  	this.todoDataService.addTodo(todo);
+  }
+  
+  onToggleTodoComplete(todo: Todo) {
   	this.todoDataService.toggleTodoComplete(todo);
   }
 
-  removeTodo(todo) {
+  onRemoveTodo(todo) {
   	this.todoDataService.deleteTodoById(todo.id);
   }
 
